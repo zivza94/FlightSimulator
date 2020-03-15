@@ -8,9 +8,6 @@ namespace Contracts
 {
     public interface IFlightSimulatorModel
     {
-        
-        //CHECK//
-
         // props
         Double Heading{ get; set; }
         Double VerSpeed{ get; set; }

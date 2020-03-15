@@ -9,7 +9,6 @@ namespace Telnet
 {
     public class TelnetClient : ITelnetClient
     {
-        //CHECK//
         public void Connect(string ip, int port)
         {
             throw new NotImplementedException();
