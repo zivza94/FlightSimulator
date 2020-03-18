@@ -22,6 +22,8 @@ namespace FlightSimulatorModel
         double _roll;
         double _pitch;
         double _altAltitude;
+        double _latitude;
+        double _longitude;
         public MyFlightSimulatorModel(ITelnetClient telnetClient)
         {
             _telnetClient = telnetClient;
@@ -31,64 +33,121 @@ namespace FlightSimulatorModel
         public Double Heading {
             get { return _heading; }
             set {
-                _heading = value;
-                NotifyPropertyChanged("Heading");
+                if (!_heading.Equals(value))
+                {
+                    _heading = value;
+                    NotifyPropertyChanged("Heading");
+                }
+                
             }
         }
         public Double VerSpeed {
             get { return _varSpeed; }
             set
             {
-                _varSpeed = value;
-                NotifyPropertyChanged("VarSpeed");
+                if (!_varSpeed.Equals(value))
+                {
+                    _varSpeed = value;
+                    NotifyPropertyChanged("VarSpeed");
+                }
+                
             }
         }
         public Double GroundSpeed {
             get { return _groundSpeed; }
             set
             {
-                _groundSpeed = value;
-                NotifyPropertyChanged("GroundSpeed");
+                if (!_groundSpeed.Equals(value))
+                {
+                    _groundSpeed = value;
+                    NotifyPropertyChanged("GroundSpeed");
+                }
+                
             }
         }
         public Double AirSpeed {
             get { return _airSpeed; }
             set
             {
-                _airSpeed = value;
-                NotifyPropertyChanged("AirSpeed");
+                if (!_airSpeed.Equals(value))
+                {
+                    _airSpeed = value;
+                    NotifyPropertyChanged("AirSpeed");
+                }
+                
             }
         }
         public Double GpsAltitude {
             get { return _gpsAltitude ; }
             set
             {
-                _gpsAltitude = value;
-                NotifyPropertyChanged("GpsAltitude");
+                if (!_gpsAltitude.Equals(value))
+                {
+                    _gpsAltitude = value;
+                    NotifyPropertyChanged("GpsAltitude");
+                }
+                
             }
         }
         public Double Roll {
             get { return _roll; }
             set
             {
-                _roll = value;
-                NotifyPropertyChanged("Roll");
+                if (!_roll.Equals(value))
+                {
+                    _roll = value;
+                    NotifyPropertyChanged("Roll");
+                }
+                
             }
         }
         public Double Pitch {
             get { return _pitch; }
             set
             {
-                _pitch = value;
-                NotifyPropertyChanged("Pitch");
+                if (!_pitch.Equals(value))
+                {
+                    _pitch = value;
+                    NotifyPropertyChanged("Pitch");
+                }
+                
             }
         }
         public Double AltAltitude {
             get { return _altAltitude; }
             set
             {
-                _altAltitude = value;
-                NotifyPropertyChanged("AltAltitude");
+                if (!_altAltitude.Equals(value))
+                {
+                    _altAltitude = value;
+                    NotifyPropertyChanged("AltAltitude");
+                }
+                
+            }
+        }
+        public Double Latitude
+        {
+            get { return _latitude; }
+            set
+            {
+                if (!_latitude.Equals(value))
+                {
+                    _latitude = value;
+                    NotifyPropertyChanged("Latitude");
+                }
+                
+            }
+        }
+        public Double Longitude
+        {
+            get { return _longitude; }
+            set
+            {
+                if (!_longitude.Equals(value))
+                {
+                    _longitude = value;
+                    NotifyPropertyChanged("Longitude");
+                }
             }
         }
 
@@ -102,7 +161,8 @@ namespace FlightSimulatorModel
 
         public void Connect(string ip, int port)
         {
-            _telnetClient.Connect(ip, port);          
+            _telnetClient.Connect(ip, port);
+            Console.WriteLine("connected to ip {0} and port {1}", ip,port);
         }
 
 
@@ -110,37 +170,63 @@ namespace FlightSimulatorModel
         {
             _stop = true;
             _telnetClient.Disconnect();
+            Console.WriteLine("disconnected to server");
         }        
         public void Start()
         {
-
             new Thread(delegate ()
             {
                 while (!_stop)
                 {
+                    Console.WriteLine("start");
                     WriteAndRead();
+                    Thread.Sleep(1000);
                 }
-            });
+            }).Start();
         }
         
         private void WriteAndRead()
         {
-            Heading = WriteToSimulator("get indicated-heading-deg");
-            VerSpeed = WriteToSimulator("get gps_indicated-vertical-speed");
-            GroundSpeed = WriteToSimulator("get gps_indicated-ground-speed-kt");
-            AirSpeed = WriteToSimulator("get airspeed-indicator_indicated-speed-kt ");
-            GpsAltitude = WriteToSimulator("get gps_indicated-altitude-ft");
-            Roll = WriteToSimulator("get attitude-indicator_internal-roll-deg");
-            Pitch = WriteToSimulator("get attitude-indicator_internal-pitch-deg");
-            AltAltitude = WriteToSimulator("get altimeter_indicated-altitude-ft");
+            Console.WriteLine("write + read");
+            Heading = WriteToSimulator("get /instrumentation/heading-indicator/indicated-heading-deg \n",Heading);
+            VerSpeed = WriteToSimulator("get /instrumentation/gps/indicated-vertical-speed \n",VerSpeed);
+            GroundSpeed = WriteToSimulator("get /instrumentation/gps/indicated-ground-speed-kt \n",GroundSpeed);
+            AirSpeed = WriteToSimulator("get /instrumentation/airspeed-indicator/indicated-speed-kt \n",AirSpeed);
+            GpsAltitude = WriteToSimulator("get /instrumentation/gps/indicated-altitude-ft \n", GpsAltitude);
+            Roll = WriteToSimulator("get /instrumentation/attitude-indicator/internal-roll-deg \n",Roll);
+            Pitch = WriteToSimulator("get /instrumentation/attitude-indicator/internal-pitch-deg \n",Pitch);
+            AltAltitude = WriteToSimulator("get /instrumentation/altimeter/indicated-altitude-ft \n",AltAltitude);
+            Latitude = WriteToSimulator("get /position/latitude-deg \n",Latitude);
+            Longitude = WriteToSimulator("get  / position/longitude-deg \n", Longitude);
         }
 
-        private double WriteToSimulator(string command)
+        private double WriteToSimulator(string command,Double prop)
         {
             double retval;
             _telnetClient.Write(command);
-            retval = Double.Parse(_telnetClient.Read());
+            string value = _telnetClient.Read();
+            if (!Double.TryParse(value, out retval))
+            {
+                retval = prop;
+            }
             return retval;
+        }
+
+        public void SetRudderAndElevator(double rudder, double elevator)
+        {
+            WriteToSimulator("set /controls/flight/rudder "+ rudder + "\n",rudder);
+            WriteToSimulator("set /controls/flight/elevator " + elevator + "\n",elevator);
+
+        }
+
+        public void SetAileron(double aileron)
+        {
+            WriteToSimulator("set /controls/flight/aileron " + aileron + "\n",aileron);
+        }
+
+        public void SetThrottle(double throttle)
+        {
+            WriteToSimulator("set /controls/engines/engine/throttle " + throttle + "\n",throttle);
         }
     }
 }

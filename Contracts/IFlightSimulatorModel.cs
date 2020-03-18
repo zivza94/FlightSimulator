@@ -17,10 +17,16 @@ namespace Contracts
         Double Roll { get; set; }
         Double Pitch { get; set; }
         Double AltAltitude { get; set; }
+        Double Latitude { get; set; }
+        Double Longitude { get; set; }
 
         //for the client
         void Connect(string ip, int port);
         void Disconnect();
         void Start();
+
+        void SetRudderAndElevator(double rudder, double elevator);
+        void SetAileron(double aileron);
+        void SetThrottle(double throttle);
     }
 }
