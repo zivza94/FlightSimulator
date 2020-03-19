@@ -9,9 +9,10 @@ using Contracts;
 
 namespace FlightSimulatorModel
 {
-    public class MyFlightSimulatorModel: IFlightSimulatorModel , INotifyPropertyChanged
+    public class MyFlightSimulatorModel: IFlightSimulatorModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
         IClient _client;
         bool _stop;
         double _heading;
