@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Contracts
 {
-    public interface ITelnetClient
+    public interface IClient
     {
         void Connect(string ip, int port);
         void Write(string command);

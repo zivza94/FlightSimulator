@@ -12,7 +12,7 @@ namespace FlightSimulatorModel
     public class MyFlightSimulatorModel: IFlightSimulatorModel , INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        ITelnetClient _telnetClient;
+        IClient _client;
         bool _stop;
         double _heading;
         double _varSpeed;
@@ -24,9 +24,9 @@ namespace FlightSimulatorModel
         double _altAltitude;
         double _latitude;
         double _longitude;
-        public MyFlightSimulatorModel(ITelnetClient telnetClient)
+        public MyFlightSimulatorModel(IClient client)
         {
-            _telnetClient = telnetClient;
+            _client = client;
             _stop = false;
         }
 
@@ -161,7 +161,7 @@ namespace FlightSimulatorModel
 
         public void Connect(string ip, int port)
         {
-            _telnetClient.Connect(ip, port);
+            _client.Connect(ip, port);
             Console.WriteLine("connected to ip {0} and port {1}", ip,port);
         }
 
@@ -169,7 +169,7 @@ namespace FlightSimulatorModel
         public void Disconnect()
         {
             _stop = true;
-            _telnetClient.Disconnect();
+            _client.Disconnect();
             Console.WriteLine("disconnected to server");
         }        
         public void Start()
@@ -199,19 +199,6 @@ namespace FlightSimulatorModel
             Latitude = WriteToSimulator("get /position/latitude-deg \n",Latitude);
             Longitude = WriteToSimulator("get  / position/longitude-deg \n", Longitude);
         }
-
-        private double WriteToSimulator(string command,Double prop)
-        {
-            double retval;
-            _telnetClient.Write(command);
-            string value = _telnetClient.Read();
-            if (!Double.TryParse(value, out retval))
-            {
-                retval = prop;
-            }
-            return retval;
-        }
-
         public void SetRudderAndElevator(double rudder, double elevator)
         {
             WriteToSimulator("set /controls/flight/rudder "+ rudder + "\n",rudder);
@@ -227,6 +214,18 @@ namespace FlightSimulatorModel
         public void SetThrottle(double throttle)
         {
             WriteToSimulator("set /controls/engines/engine/throttle " + throttle + "\n",throttle);
+        }
+
+        private double WriteToSimulator(string command, Double prop)
+        {
+            double retval;
+            _client.Write(command);
+            string value = _client.Read();
+            if (!Double.TryParse(value, out retval))
+            {
+                retval = prop;
+            }
+            return retval;
         }
     }
 }

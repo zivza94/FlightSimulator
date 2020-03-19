@@ -7,8 +7,8 @@
     <ProjectGuid>{3F5AD831-E1DE-4B3E-B79B-D6ACA601D4A0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Telnet</RootNamespace>
-    <AssemblyName>Telnet</AssemblyName>
+    <RootNamespace>ClientSide</RootNamespace>
+    <AssemblyName>ClientSide</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TelnetClient.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

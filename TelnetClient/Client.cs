@@ -6,9 +6,9 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Telnet
+namespace ClientSide
 {
-    public class TelnetClient : ITelnetClient
+    public class Client : IClient
     {
         private TcpClient _client;
         private NetworkStream _ns;
