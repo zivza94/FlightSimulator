@@ -8,11 +8,11 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlightSimulatorViewModel
+namespace FlightSimulatorModel
 {
-    public class MyFlightSimulatorViewModel: INotifyPropertyChanged, IFlightSimulatorViewModel
+    public class MyFlightSimulatorViewModel : INotifyPropertyChanged, IFlightSimulatorViewModel
     {
-        private IFlightSimulatorModel _model;
+        readonly private IFlightSimulatorModel _model;
         public event PropertyChangedEventHandler PropertyChanged;
         private double _aileron;
         private double _throttle;
@@ -20,7 +20,7 @@ namespace FlightSimulatorViewModel
         {
             _model = model;
             _model.PropertyChanged +=
-                delegate(object sender, PropertyChangedEventArgs e) { NotifyPropertyChanged("VM_" + e.PropertyName); };
+                delegate (object sender, PropertyChangedEventArgs e) { NotifyPropertyChanged("VM_" + e.PropertyName); };
 
         }
         public void NotifyPropertyChanged(string propName)
@@ -72,7 +72,7 @@ namespace FlightSimulatorViewModel
         }
         public double VM_Throttle
         {
-            get { return _throttle;}
+            get { return _throttle; }
             set
             {
                 _throttle = value;
@@ -81,7 +81,7 @@ namespace FlightSimulatorViewModel
         }
         public double VM_Aileron
         {
-            get { return _aileron;}
+            get { return _aileron; }
             set
             {
                 _aileron = value;
@@ -90,7 +90,7 @@ namespace FlightSimulatorViewModel
         }
         public void SetRudderAndElevator(double rudder, double elevator)
         {
-            _model.SetRudderAndElevator(rudder,elevator);
+            _model.SetRudderAndElevator(rudder, elevator);
         }
     }
 }
