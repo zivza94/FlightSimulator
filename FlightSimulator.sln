@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientSide", "TelnetClient\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightSimulatorViewModel", "FlightSimulatorViewModel\FlightSimulatorViewModel.csproj", "{1C647ED8-9932-4642-869D-7978D6D5BD9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightSimulatorView", "FlightSimulatorView\FlightSimulatorView.csproj", "{5ADD80B2-6C72-483B-A428-BEC093A75EC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightSimulatorApp", "FlightSimulatorView\FlightSimulatorApp.csproj", "{5ADD80B2-6C72-483B-A428-BEC093A75EC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
