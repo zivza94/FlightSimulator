@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientSide", "TelnetClient\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightSimulatorViewModel", "FlightSimulatorViewModel\FlightSimulatorViewModel.csproj", "{1C647ED8-9932-4642-869D-7978D6D5BD9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightSimulatorView", "FlightSimulatorView\FlightSimulatorView.csproj", "{5ADD80B2-6C72-483B-A428-BEC093A75EC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightSimulatorApp", "FlightSimulatorApp\FlightSimulatorApp.csproj", "{3AE86372-CB89-47A8-AD82-C21B272993FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{1C647ED8-9932-4642-869D-7978D6D5BD9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C647ED8-9932-4642-869D-7978D6D5BD9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C647ED8-9932-4642-869D-7978D6D5BD9E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5ADD80B2-6C72-483B-A428-BEC093A75EC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5ADD80B2-6C72-483B-A428-BEC093A75EC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5ADD80B2-6C72-483B-A428-BEC093A75EC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5ADD80B2-6C72-483B-A428-BEC093A75EC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AE86372-CB89-47A8-AD82-C21B272993FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AE86372-CB89-47A8-AD82-C21B272993FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AE86372-CB89-47A8-AD82-C21B272993FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AE86372-CB89-47A8-AD82-C21B272993FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
