@@ -9,9 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Cont
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientSide", "TelnetClient\ClientSide.csproj", "{3F5AD831-E1DE-4B3E-B79B-D6ACA601D4A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightSimulatorViewModel", "FlightSimulatorViewModel\FlightSimulatorViewModel.csproj", "{1C647ED8-9932-4642-869D-7978D6D5BD9E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightSimulatorApp", "FlightSimulatorApp\FlightSimulatorApp.csproj", "{9B3B3963-52AB-4619-9C6F-FB9E48B47128}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlightSimulatorApp", "FlightSimulatorApp\FlightSimulatorApp.csproj", "{9B3B3963-52AB-4619-9C6F-FB9E48B47128}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +29,6 @@ Global
 		{3F5AD831-E1DE-4B3E-B79B-D6ACA601D4A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F5AD831-E1DE-4B3E-B79B-D6ACA601D4A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F5AD831-E1DE-4B3E-B79B-D6ACA601D4A0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C647ED8-9932-4642-869D-7978D6D5BD9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C647ED8-9932-4642-869D-7978D6D5BD9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C647ED8-9932-4642-869D-7978D6D5BD9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C647ED8-9932-4642-869D-7978D6D5BD9E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9B3B3963-52AB-4619-9C6F-FB9E48B47128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9B3B3963-52AB-4619-9C6F-FB9E48B47128}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B3B3963-52AB-4619-9C6F-FB9E48B47128}.Release|Any CPU.ActiveCfg = Release|Any CPU
