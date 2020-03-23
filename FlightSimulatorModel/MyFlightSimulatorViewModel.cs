@@ -21,7 +21,18 @@ namespace FlightSimulatorModel
             _model = model;
             _model.PropertyChanged +=
                 delegate (object sender, PropertyChangedEventArgs e) { NotifyPropertyChanged("VM_" + e.PropertyName); };
+            
 
+        }
+
+        public void EndConnection()
+        {
+            _model.Disconnect();
+        }
+        public void StartConnection()
+        {
+            _model.Connect("localhost", 5402);
+            _model.Start();
         }
         public void NotifyPropertyChanged(string propName)
         {

@@ -179,7 +179,7 @@ namespace FlightSimulatorModel
             {
                 while (!_stop)
                 {
-                    Console.WriteLine("start");
+                    //Console.WriteLine("start");
                     WriteAndRead();
                     Thread.Sleep(1000);
                 }
@@ -188,7 +188,7 @@ namespace FlightSimulatorModel
         
         private void WriteAndRead()
         {
-            Console.WriteLine("write + read");
+            //Console.WriteLine("write + read");
             Heading = WriteToSimulator("get /instrumentation/heading-indicator/indicated-heading-deg \n",Heading);
             VerSpeed = WriteToSimulator("get /instrumentation/gps/indicated-vertical-speed \n",VerSpeed);
             GroundSpeed = WriteToSimulator("get /instrumentation/gps/indicated-ground-speed-kt \n",GroundSpeed);
@@ -209,11 +209,13 @@ namespace FlightSimulatorModel
 
         public void SetAileron(double aileron)
         {
+            Console.WriteLine("send aileron");
             WriteToSimulator("set /controls/flight/aileron " + aileron + "\n",aileron);
         }
 
         public void SetThrottle(double throttle)
         {
+            Console.WriteLine("send throttle");
             WriteToSimulator("set /controls/engines/engine/throttle " + throttle + "\n",throttle);
         }
 
