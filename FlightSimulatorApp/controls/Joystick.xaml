@@ -5,9 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FlightSimulatorApp.controls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="500" d:DesignWidth="800">
     <Grid>
-        <Canvas  x:Name="Base" Margin="0" Width="340" Height="340">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Canvas  x:Name="Base" Margin="10" Width="340" Height="340">
             <Ellipse HorizontalAlignment="Left" Height="340" VerticalAlignment="Top" Width="340">
                 <Ellipse.Fill>
                     <RadialGradientBrush>
@@ -119,7 +124,7 @@
                 <Canvas.Resources>
 
                     <Storyboard x:Key="CenterKnob" Name="centerKnob" Completed="centerKnob_Completed">
-                        
+
 
                         <DoubleAnimation Storyboard.TargetName="knobPosition"
                              Storyboard.TargetProperty="X" To="0" Duration="0:0:0.2">
@@ -136,5 +141,16 @@
                 </Canvas.Resources>
             </Canvas>
         </Canvas>
+        <DockPanel Grid.Row="1" VerticalAlignment="Center" Margin="10">
+            <TextBlock Text="Aileron"/>
+            <TextBox Text="{Binding ElementName=Aileron, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
+            <Slider Minimum="-1" Maximum="1" TickPlacement="BottomRight" TickFrequency="5" Name="Aileron" ValueChanged="Aileron_ValueChanged"/>
+        </DockPanel>
+        <DockPanel Grid.Row="2" VerticalAlignment="Center" Margin="10">
+            <TextBlock Text="Throttle" />
+            <TextBox Text="{Binding ElementName=Throttle, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
+            <Slider Minimum="0" Maximum="1" TickPlacement="BottomRight" TickFrequency="5" Name="Throttle" ValueChanged="Throttle_ValueChanged"/>
+        </DockPanel>
+
     </Grid>
 </UserControl>
