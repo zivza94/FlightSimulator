@@ -36,5 +36,10 @@ namespace FlightSimulatorApp.controls
         {
 
         }
+
+        private void Knob_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }

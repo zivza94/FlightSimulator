@@ -20,12 +20,58 @@ namespace FlightSimulatorApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Default
+        int intPort = 0;
+        int intIp = 0;
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Joystick_Loaded(object sender, RoutedEventArgs e)
+        private void TextBoxCheck(TextBox textBox)
+        {
+            string strNum = textBox.Text;
+            int num = 0;
+            if (strNum.Equals("Default")) { }
+            else if (strNum.Length > 0 && int.TryParse(strNum, out num) == false)
+            {
+                MessageBox.Show("Use only numbers");
+                textBox.Text = textBox.Text.Remove(strNum.Length - 1);
+            } else
+            {
+                if (textBox.Name.Equals("port"))
+                {
+                    intPort = num;
+                }
+                else
+                {
+                    intIp = num;
+                }
+            }
+        }
+        private void TextBox_TextChanged_PORT(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            string portNumber = textBox.Text;
+            if (portNumber.Equals("Default")) { }
+            else {
+                TextBoxCheck(textBox);
+            }
+        }
+
+        private void TextBox_TextChanged_IP(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            string ipNumber = textBox.Text;
+            if (ipNumber.Equals("Default")) { }
+            else
+            {
+                TextBoxCheck(textBox);
+            }
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
 
         }
