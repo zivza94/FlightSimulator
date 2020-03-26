@@ -28,14 +28,6 @@ namespace FlightSimulatorApp.controls
 
         }
 
-        private void Aileron_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
-        private void Throttle_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
 
         private void Knob_MouseEnter(object sender, MouseEventArgs e)
         {

@@ -73,7 +73,10 @@ namespace FlightSimulatorApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            // ADD CONNECTION TO THE IP AND PORT 
+            AppView startApp = new AppView();
+            this.Hide();
+            startApp.Show();
         }
     }
 }

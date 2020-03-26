@@ -14,14 +14,22 @@ using System.Windows.Shapes;
 namespace FlightSimulatorApp
 {
     /// <summary>
-    /// Interaction logic for AppView.xaml
+    /// Interaction logic for MyJoystick.xaml
     /// </summary>
-    public partial class AppView : Window
+    public partial class MyJoystick : UserControl
     {
-        public AppView()
+        public MyJoystick()
         {
             InitializeComponent();
         }
 
+        private void Aileron_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+        private void Throttle_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
     }
 }
