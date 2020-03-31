@@ -10,12 +10,12 @@
         </Grid.RowDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="pictures\aircraft.jpg" />
-            </Grid.Background>
-            <TextBlock Text="Welcome Abroad" FontSize="50" Padding="30" TextAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Bold"/>
-        <TextBlock Grid.Row="2" Text="Please choose port number:" FontSize="25" Margin="10"/>
-        <TextBlock Grid.Row="2" Text="Please choose ip number:" FontSize="25" Margin="10,46,50,15"/>
-        <TextBox Name="port"  HorizontalAlignment="Left" Margin="339,15,0,0" Grid.Row="2" Text="Default" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Height="31" RenderTransformOrigin="0.724,0.953" TextChanged="TextBox_TextChanged_PORT"/>
-        <TextBox Name="ip" HorizontalAlignment="Left" Margin="339,46,0,0" Grid.Row="2" Text="Default" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Height="31" RenderTransformOrigin="0.724,0.953" TextChanged="TextBox_TextChanged_IP"/>
+        </Grid.Background>
+        <TextBlock Text="Welcome Abroad" FontSize="50" Padding="30" TextAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Bold"/>
+        <TextBlock Grid.Row="2" Text="port number:" FontSize="25" Margin="52,10,10,10"/>
+        <TextBlock Grid.Row="2" Text="ip number:" FontSize="25" Margin="52,46,50,15"/>
+        <TextBox Name="port"  HorizontalAlignment="Left" Margin="205,15,0,0" Grid.Row="2" Text="Default" TextWrapping="Wrap" VerticalAlignment="Top" Width="196" Height="31" RenderTransformOrigin="0.724,0.953" TextChanged="TextBox_TextChanged_PORT"/>
+        <TextBox Name="ip" HorizontalAlignment="Left" Margin="205,46,0,0" Grid.Row="2" Text="Default" TextWrapping="Wrap" VerticalAlignment="Top" Width="196" Height="31" RenderTransformOrigin="0.724,0.953" TextChanged="TextBox_TextChanged_IP"/>
         <Button Content="Start" HorizontalAlignment="Center" Margin="0,108,0,0" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="0.077,-2.006" Height="27" Width="78" BorderBrush="Black" Click="Button_Click"/>
 
     </Grid>

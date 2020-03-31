@@ -4,16 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:flightsimulatorapp="clr-namespace:FlightSimulatorApp"
              mc:Ignorable="d" 
-             d:DesignHeight="750" d:DesignWidth="1300">
+             d:DesignHeight="1500" d:DesignWidth="1800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="800"/>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <flightsimulatorapp:MyJoystick Grid.Column="1" Margin="0,122,0,0" Grid.RowSpan="2"/>
+        <flightsimulatorapp:MyJoystick Grid.Column="1" Grid.Row="1" />
     </Grid>
 </Window>
