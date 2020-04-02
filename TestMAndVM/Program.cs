@@ -11,9 +11,9 @@ namespace TestMAndVM
 {
     class Program
     {
-        static void Main(string[] args)
+        /*static void Main(string[] args)
         {
-            MyFlightSimulatorViewModel vm = new MyFlightSimulatorViewModel(new MyFlightSimulatorModel(new Client()));
+            FlightSimulatorControlVM vm = new FlightSimulatorControlVM(new FlightSimulatorModel.FlightSimulatorModel(new Client()));
             vm.StartConnection();
             double rudder = 0.05;
             double elevator = 0.01;
@@ -36,7 +36,7 @@ namespace TestMAndVM
             Console.ReadLine();
         }
 
-        static void PrintData(MyFlightSimulatorViewModel vm)
+        static void PrintData(FlightSimulatorControlVM controler, FlightSimulatorMapVM map, FlightSimulatorDashboardVM dashboard)
         {
             //dashboard
             Console.WriteLine("*************VARS*************");
@@ -56,6 +56,6 @@ namespace TestMAndVM
             Console.WriteLine("**********SETTERS************");
             Console.WriteLine("ailreon: "+vm.VM_Aileron);
             Console.WriteLine("throrrle: "+vm.VM_Throttle);
-        }
+        }*/
     }
 }

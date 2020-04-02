@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyFlightSimulatorModel.cs" />
-    <Compile Include="MyFlightSimulatorViewModel.cs" />
+    <Compile Include="FlightSimulatorDashboardVM.cs" />
+    <Compile Include="FlightSimulatorLoginVM.cs" />
+    <Compile Include="FlightSimulatorMapVM.cs" />
+    <Compile Include="FlightSimulatorModel.cs" />
+    <Compile Include="FlightSimulatorControlVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

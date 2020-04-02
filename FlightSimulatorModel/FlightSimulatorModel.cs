@@ -9,7 +9,7 @@ using Contracts;
 
 namespace FlightSimulatorModel
 {
-    public class MyFlightSimulatorModel: IFlightSimulatorModel
+    public class FlightSimulatorModel: IFlightSimulatorModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -25,7 +25,7 @@ namespace FlightSimulatorModel
         double _altAltitude;
         double _latitude;
         double _longitude;
-        public MyFlightSimulatorModel(IClient client)
+        public FlightSimulatorModel(IClient client)
         {
             _client = client;
             _stop = false;
