@@ -1,0 +1,22 @@
+﻿<Window x:Class="FlightSimulatorApp.AppView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:flightsimulatorapp="clr-namespace:FlightSimulatorApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="1000" d:DesignWidth="1200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="1.5*"/>
+        </Grid.RowDefinitions>
+        <Border Background="SeaShell" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <flightsimulatorapp:IndicatorsView Grid.Column="1" Grid.Row="0" Margin="20"/>
+        <flightsimulatorapp:MyJoystick Grid.Column="1" Grid.Row="1" />
+        <flightsimulatorapp:Map Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="30"/>
+    </Grid>
+</Window>

@@ -11,25 +11,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FlightSimulatorApp.controls
+namespace FlightSimulatorApp
 {
     /// <summary>
-    /// Interaction logic for Joystick.xaml
+    /// Interaction logic for MyJoystick.xaml
     /// </summary>
-    public partial class Joystick : UserControl
+    public partial class MyJoystick : UserControl
     {
-        public Joystick()
+        public MyJoystick()
         {
             InitializeComponent();
         }
 
-        private void centerKnob_Completed(object sender, EventArgs e)
+        private void Aileron_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
         }
-
-
-        private void Knob_MouseEnter(object sender, MouseEventArgs e)
+        private void Throttle_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
         }

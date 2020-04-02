@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="FlightSimulatorApp.MyJoystick"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FlightSimulatorApp" xmlns:controls="clr-namespace:FlightSimulatorApp.controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="800">
+    <Viewbox Stretch="Uniform">
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <controls:Joystick/>
+
+        <DockPanel Grid.Row="1" VerticalAlignment="Center" Margin="10">
+            <TextBlock Text="Aileron"/>
+            <TextBox Text="{Binding ElementName=Aileron, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
+            <Slider Minimum="-1" Maximum="1" TickPlacement="BottomRight" TickFrequency="5" Name="Aileron" ValueChanged="Aileron_ValueChanged"/>
+        </DockPanel>
+        <DockPanel Grid.Row="2" VerticalAlignment="Center" Margin="10">
+            <TextBlock Text="Throttle" />
+            <TextBox Text="{Binding ElementName=Throttle, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
+            <Slider Minimum="0" Maximum="1" TickPlacement="BottomRight" TickFrequency="5" Name="Throttle" ValueChanged="Throttle_ValueChanged"/>
+        </DockPanel>
+        </Grid>
+      </Viewbox>
+</UserControl>

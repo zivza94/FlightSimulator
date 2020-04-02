@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="FlightSimulatorApp.IndicatorsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FlightSimulatorApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="400">
+    <Grid>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border Background="Silver" Grid.ColumnSpan="4" Grid.RowSpan="5" CornerRadius="7"/>
+        <TextBlock Text="Dash Board" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Margin="10" FontSize="15" FontWeight="Bold"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Heading (deg)" Margin="4"/>
+        <Label Grid.Row="1" Grid.Column="1" Margin="4"></Label>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Vertical Speed" Margin="4"/>
+        <Label Grid.Row="2" Grid.Column="1" Margin="4"></Label>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Ground Speed (kt)" Margin="4"/>
+        <Label Grid.Row="3" Grid.Column="1" Margin="4"></Label>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Air Speed (kt)" Margin="4"/>
+        <Label Grid.Row="4" Grid.Column="1" Margin="4"></Label>
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="Altitude (ft)" Margin="4"/>
+        <Label Grid.Row="1" Grid.Column="3" Margin="4"></Label>
+        <TextBlock Grid.Row="2" Grid.Column="2" Text="Roll (deg)" Margin="4"/>
+        <Label Grid.Row="2" Grid.Column="3" Margin="4"></Label>
+        <TextBlock Grid.Row="3" Grid.Column="2" Text="Pitch (deg" Margin="4"/>
+        <Label Grid.Row="3" Grid.Column="3" Margin="4"></Label>
+        <TextBlock Grid.Row="4" Grid.Column="2" Text="Altimeter (ft)" Margin="4"/>
+        <Label Grid.Row="4" Grid.Column="3" Margin="4"></Label>
+    </Grid>
+</UserControl>
