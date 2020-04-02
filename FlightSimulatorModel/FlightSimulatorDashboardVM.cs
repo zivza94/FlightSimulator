@@ -13,7 +13,7 @@ namespace FlightSimulatorModel
         readonly private IFlightSimulatorModel _model;
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public FlightSimulatorDashboardVM(FlightSimulatorModel model)
+        public FlightSimulatorDashboardVM(IFlightSimulatorModel model)
         {
             _model = model;
             _model.PropertyChanged +=

@@ -44,7 +44,7 @@
     <Compile Include="FlightSimulatorDashboardVM.cs" />
     <Compile Include="FlightSimulatorLoginVM.cs" />
     <Compile Include="FlightSimulatorMapVM.cs" />
-    <Compile Include="FlightSimulatorModel.cs" />
+    <Compile Include="FlightSimulatorM.cs" />
     <Compile Include="FlightSimulatorControlVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

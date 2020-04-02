@@ -9,7 +9,7 @@ using Contracts;
 
 namespace FlightSimulatorModel
 {
-    public class FlightSimulatorModel: IFlightSimulatorModel
+    public class FlightSimulatorM: IFlightSimulatorModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -25,7 +25,8 @@ namespace FlightSimulatorModel
         double _altAltitude;
         double _latitude;
         double _longitude;
-        public FlightSimulatorModel(IClient client)
+        string _logger;
+        public FlightSimulatorM(IClient client)
         {
             _client = client;
             _stop = false;
@@ -151,6 +152,13 @@ namespace FlightSimulatorModel
                 }
             }
         }
+        public string Logger
+        {
+            get
+            {
+                return _logger;
+            }
+        }
 
         public void NotifyPropertyChanged(string propName)
         {
@@ -162,16 +170,29 @@ namespace FlightSimulatorModel
 
         public void Connect(string ip, int port)
         {
-            _client.Connect(ip, port);
-            Console.WriteLine("connected to ip {0} and port {1}", ip,port);
+            try
+            {
+                _client.Connect(ip, port);
+                Console.WriteLine("connected to ip {0} and port {1}", ip, port);
+            }catch(Exception e)
+            {
+                AddToLogger("Failed to connect to server, Please try again");
+            }
+            
         }
 
 
         public void Disconnect()
         {
             _stop = true;
-            _client.Disconnect();
-            Console.WriteLine("disconnected to server");
+            try
+            {
+                _client.Disconnect();
+            }
+            catch (Exception e)
+            {
+                AddToLogger("Failed to disconnect from server");
+            }
         }        
         public void Start()
         {
@@ -179,9 +200,8 @@ namespace FlightSimulatorModel
             {
                 while (!_stop)
                 {
-                    //Console.WriteLine("start");
                     WriteAndRead();
-                    Thread.Sleep(1000);
+                    Thread.Sleep(250);
                 }
             }).Start();
         }
@@ -202,33 +222,49 @@ namespace FlightSimulatorModel
         }
         public void SetRudderAndElevator(double rudder, double elevator)
         {
-            WriteToSimulator("set /controls/flight/rudder "+ rudder + "\n",rudder);
-            WriteToSimulator("set /controls/flight/elevator " + elevator + "\n",elevator);
+
+                WriteToSimulator("set /controls/flight/rudder " + rudder + "\n", rudder);
+                WriteToSimulator("set /controls/flight/elevator " + elevator + "\n", elevator);
+
+
 
         }
 
         public void SetAileron(double aileron)
         {
-            Console.WriteLine("send aileron");
-            WriteToSimulator("set /controls/flight/aileron " + aileron + "\n",aileron);
+                WriteToSimulator("set /controls/flight/aileron " + aileron + "\n", aileron);
         }
 
         public void SetThrottle(double throttle)
-        {
-            Console.WriteLine("send throttle");
+        {           
             WriteToSimulator("set /controls/engines/engine/throttle " + throttle + "\n",throttle);
         }
 
         private double WriteToSimulator(string command, Double prop)
         {
             double retval;
-            _client.Write(command);
-            string value = _client.Read();
-            if (!Double.TryParse(value, out retval))
+            try
             {
+                _client.Write(command);
+                string value = _client.Read();
+                if (!Double.TryParse(value, out retval))
+                {
+                    retval = prop;
+                }
+
+            }
+            catch(Exception ex)
+            {
+                AddToLogger(ex.Message);
                 retval = prop;
             }
+            
             return retval;
+        }
+        public void AddToLogger(string msg)
+        {
+            _logger += msg + "\n";
+            NotifyPropertyChanged("Logger");
         }
     }
 }

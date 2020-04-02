@@ -20,6 +20,7 @@ namespace Contracts
         Double AltAltitude { get; set; }
         Double Latitude { get; set; }
         Double Longitude { get; set; }
+        string Logger { get; }
 
         //for the client
         void Connect(string ip, int port);

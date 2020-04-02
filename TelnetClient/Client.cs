@@ -14,21 +14,48 @@ namespace ClientSide
         private NetworkStream _ns;
         public void Connect(string ip, int port)
         {
-            _client = new TcpClient("localhost",5402);
-            _ns = _client.GetStream();
+            try
+            {
+                _client = new TcpClient("localhost", 5402);
+                _ns = _client.GetStream();
+                _ns.ReadTimeout = 1000;
+                _ns.WriteTimeout = 1000;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public void Disconnect()
         {
-            _ns.Close();
-            _client.Close();
+            try {
+                _ns.Close();
+                _client.Close();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            
         }
 
         public string Read()
         {
             string retval;
             byte[] bytes= new byte[1024];
-            int bytesRead = _ns.Read(bytes, 0, bytes.Length);
+            int bytesRead;
+            try { 
+                bytesRead = _ns.Read(bytes, 0, bytes.Length); 
+            } catch (Exception e)
+            {
+                throw e;
+            }
+            
+            if(bytesRead == 0)
+            {
+                throw new Exception("couldn't read from server");
+            }
             retval = Encoding.ASCII.GetString(bytes, 0, bytesRead);
             return retval;
         }
@@ -37,7 +64,14 @@ namespace ClientSide
         {
             byte[] bytes = new byte[1024];
             bytes = Encoding.ASCII.GetBytes(command);
-            _ns.Write(bytes,0,bytes.Length);
+            try
+            {
+                _ns.Write(bytes, 0, bytes.Length);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }                    
         }
     }
 }
