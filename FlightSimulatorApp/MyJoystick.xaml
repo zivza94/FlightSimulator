@@ -8,23 +8,22 @@
              d:DesignHeight="500" d:DesignWidth="800">
     <Viewbox Stretch="Uniform">
         <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="7*"></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <controls:Joystick/>
-
-        <DockPanel Grid.Row="1" VerticalAlignment="Center" Margin="10">
-            <TextBlock Text="Aileron"/>
-            <TextBox Text="{Binding ElementName=Aileron, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
-            <Slider Minimum="-1" Maximum="1" TickPlacement="BottomRight" TickFrequency="5" Name="Aileron" ValueChanged="Aileron_ValueChanged"/>
-        </DockPanel>
-        <DockPanel Grid.Row="2" VerticalAlignment="Center" Margin="10">
-            <TextBlock Text="Throttle" />
-            <TextBox Text="{Binding ElementName=Throttle, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
-            <Slider Minimum="0" Maximum="1" TickPlacement="BottomRight" TickFrequency="5" Name="Throttle" ValueChanged="Throttle_ValueChanged"/>
-        </DockPanel>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <controls:Joystick/>
+            <DockPanel Grid.Row="1" VerticalAlignment="Center" Margin="10">
+                <TextBlock Text="Aileron"/>
+                <TextBlock Text="{Binding ElementName=Aileron, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
+                <Slider Minimum="-1" Maximum="1" TickPlacement="BottomRight" TickFrequency="5" Name="Aileron"/>
+            </DockPanel>
+            <DockPanel Grid.Row="2" VerticalAlignment="Center" Margin="10">
+                <TextBlock Text="Throttle" />
+                <TextBlock Text="{Binding ElementName=Throttle, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
+                <Slider Minimum="0" Maximum="1" TickPlacement="BottomRight" TickFrequency="5" Name="Throttle" ValueChanged="{Binding Path=VM_Throttle}"/>
+            </DockPanel>
         </Grid>
-      </Viewbox>
+    </Viewbox>
 </UserControl>

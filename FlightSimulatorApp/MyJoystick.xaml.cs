@@ -21,6 +21,7 @@ namespace FlightSimulatorApp
         public MyJoystick()
         {
             InitializeComponent();
+            DataContext = (Application.Current as App).controlVM;
         }
 
         private void Aileron_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
