@@ -51,6 +51,7 @@ namespace TestMAndVM
                 controlVM.SetRudderAndElevator(rudder,elevator);
                 controlVM.VM_Aileron = ailron;
                 controlVM.VM_Throttle = throttle;
+                Thread.Sleep(250);
             }
             PrintData(controlVM,mapVM,dashVM,loginVM);
             

@@ -21,9 +21,10 @@ namespace Contracts
         Double Latitude { get; set; }
         Double Longitude { get; set; }
         string Logger { get; }
+        bool Connected { get; set; }
 
         //for the client
-        void Connect(string ip, int port);
+        void Connect(string ip, string port);
         void Disconnect();
         void Start();
 

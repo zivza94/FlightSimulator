@@ -12,6 +12,37 @@ namespace FlightSimulatorModel
     {
         readonly private IFlightSimulatorModel _model;
         public event PropertyChangedEventHandler PropertyChanged;
+        string _ip = "localhost";
+        string _port = "5402";
+        public string VM_Ip { 
+            get
+            {
+                return _ip;
+            }
+            set
+            {
+                _ip = value;
+            }
+        }
+
+        public string VM_Port
+        {
+            get
+            {
+                return _port;
+            }
+            set
+            {
+                _port = value;
+            }
+        }
+        public bool VM_Connected
+        {
+            get
+            {
+                return _model.Connected;
+            }
+        }
 
         public string VM_Logger
         {
@@ -40,7 +71,7 @@ namespace FlightSimulatorModel
         }
         public void StartConnection()
         {
-            _model.Connect("localhost", 5402);
+            _model.Connect(VM_Ip, VM_Port);
             _model.Start();
         }
 

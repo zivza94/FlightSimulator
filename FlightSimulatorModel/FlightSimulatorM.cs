@@ -26,12 +26,14 @@ namespace FlightSimulatorModel
         double _latitude;
         double _longitude;
         string _logger;
+        bool _connected = false;
+
         public FlightSimulatorM(IClient client)
         {
             _client = client;
             _stop = false;
         }
-
+        //DashBoard
         public Double Heading {
             get { return _heading; }
             set {
@@ -127,6 +129,7 @@ namespace FlightSimulatorModel
                 
             }
         }
+        //Map
         public Double Latitude
         {
             get { return _latitude; }
@@ -152,13 +155,29 @@ namespace FlightSimulatorModel
                 }
             }
         }
+        //Login
         public string Logger
         {
             get
             {
                 return _logger;
+            }                                                
+        }
+        public bool Connected { 
+            get 
+            {
+                return _connected;
+            }
+            set {
+                if(_connected != value)
+                {
+                    _connected = value;
+                    NotifyPropertyChanged("Connected");
+                }              
             }
         }
+
+
 
         public void NotifyPropertyChanged(string propName)
         {
@@ -168,15 +187,22 @@ namespace FlightSimulatorModel
             }
         }
 
-        public void Connect(string ip, int port)
+        public void Connect(string ip, string port)
         {
+            int portNum;
+            if(!int.TryParse(port, out portNum))
+            {
+                AddToLogger("Port number is numbers only, please try again");
+                return;
+            }
             try
             {
-                _client.Connect(ip, port);
-                Console.WriteLine("connected to ip {0} and port {1}", ip, port);
+                _client.Connect(ip, portNum);
+                AddToLogger("connected to ip " +ip+ " and port "+ portNum);
+                Connected = true;
             }catch(Exception e)
             {
-                AddToLogger("Failed to connect to server, Please try again");
+                AddToLogger("Failed to connect to server, Please try again" + e.Message);
             }
             
         }
@@ -188,10 +214,11 @@ namespace FlightSimulatorModel
             try
             {
                 _client.Disconnect();
+                Connected = false;
             }
             catch (Exception e)
             {
-                AddToLogger("Failed to disconnect from server");
+                AddToLogger("Failed to disconnect from server" + e.Message);
             }
         }        
         public void Start()
@@ -222,12 +249,8 @@ namespace FlightSimulatorModel
         }
         public void SetRudderAndElevator(double rudder, double elevator)
         {
-
                 WriteToSimulator("set /controls/flight/rudder " + rudder + "\n", rudder);
                 WriteToSimulator("set /controls/flight/elevator " + elevator + "\n", elevator);
-
-
-
         }
 
         public void SetAileron(double aileron)
