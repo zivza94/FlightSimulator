@@ -21,6 +21,7 @@ namespace FlightSimulatorApp
         public IndicatorsView()
         {
             InitializeComponent();
+            DataContext = DataContext = (Application.Current as App).dashboardVM;
         }
     }
 }

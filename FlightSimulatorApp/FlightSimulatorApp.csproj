@@ -4,7 +4,13 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <Configurations>Debug;Release;x86</Configurations>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FlightSimulatorModel\FlightSimulatorModel.csproj" />
+    <ProjectReference Include="..\TelnetClient\ClientSide.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
     <Reference Include="Microsoft.Maps.MapControl.WPF">
@@ -32,4 +38,7 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="taskkill /f /fi &quot;pid gt 0&quot; /im &quot;YourProcess.vshost.exe&quot;" />
+  </Target>
 </Project>

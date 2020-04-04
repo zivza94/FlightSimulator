@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightSimulatorModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,7 @@ namespace FlightSimulatorApp
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = (Application.Current as App).loginVM;
         }
 
         private void TextBoxCheck(TextBox textBox)
@@ -74,6 +76,7 @@ namespace FlightSimulatorApp
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // ADD CONNECTION TO THE IP AND PORT
+            (Application.Current as App).loginVM.StartConnection();
             AppView startApp = new AppView();
             this.Hide();
             startApp.Show();
