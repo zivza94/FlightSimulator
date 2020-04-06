@@ -17,12 +17,12 @@
             <DockPanel Grid.Row="1" VerticalAlignment="Center" Margin="10">
                 <TextBlock Text="Aileron"/>
                 <TextBlock Text="{Binding ElementName=Aileron, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
-                <Slider Minimum="-1" Maximum="1" TickPlacement="BottomRight" TickFrequency="5" Name="Aileron"/>
+                <Slider Minimum="-1" Maximum="1" TickPlacement="BottomRight" TickFrequency="5" Name="Aileron" Value="{Binding Path=VM_Aileron, Mode=TwoWay}"/>
             </DockPanel>
             <DockPanel Grid.Row="2" VerticalAlignment="Center" Margin="10">
                 <TextBlock Text="Throttle" />
                 <TextBlock Text="{Binding ElementName=Throttle, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
-                <Slider Minimum="0" Maximum="1" TickPlacement="BottomRight" TickFrequency="5" Name="Throttle" ValueChanged="{Binding Path=VM_Throttle}"/>
+                <Slider Minimum="0" Maximum="1" TickPlacement="BottomRight" TickFrequency="5" Name="Throttle" Value="{Binding Path=VM_Throttle, Mode=TwoWay}"/>
             </DockPanel>
         </Grid>
     </Viewbox>

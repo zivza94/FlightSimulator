@@ -260,7 +260,7 @@ namespace FlightSimulatorModel
 
         public void SetThrottle(double throttle)
         {           
-            WriteToSimulator("set /controls/engines/engine/throttle " + throttle + "\n",throttle);
+            WriteToSimulator("set /controls/engines/current-engine/throttle " + throttle + "\n",throttle);
         }
 
         private double WriteToSimulator(string command, Double prop)
