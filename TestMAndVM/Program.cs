@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
+
 namespace TestMAndVM
 {
     class Program
@@ -72,10 +73,10 @@ namespace TestMAndVM
             Console.WriteLine("pitch: "+ dashboard.VM_Pitch);
             Console.WriteLine("roll: "+ dashboard.VM_Roll);
             Console.WriteLine("verSpeed: "+ dashboard.VM_VerSpeed);
-            //map
+            /*//map
             Console.WriteLine("************MAP***************");
             Console.WriteLine("Latitude: " + map.VM_Latitude);
-            Console.WriteLine("longtitude: "+ map.VM_Longitude);
+            Console.WriteLine("longtitude: "+ map.VM_Longitude);*/
             //setters
             Console.WriteLine("**********SETTERS************");
             Console.WriteLine("ailreon: "+ controler.VM_Aileron);

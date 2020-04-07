@@ -1,4 +1,5 @@
 ﻿using Contracts;
+using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,13 +28,13 @@ namespace FlightSimulatorModel
             }
         }
 
-        public double VM_Latitude
+        public Location VM_Latitude
         {
-            get { return _model.Latitude; }
+            get { return new Location(_model.Latitude, _model.Longitude);}
         }
-        public double VM_Longitude
+        public Location VM_Longitude
         {
-            get { return _model.Longitude; }
+            get { return new Location(_model.Latitude, _model.Longitude); }
         }
     }
 }

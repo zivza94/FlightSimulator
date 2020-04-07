@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -27,6 +28,8 @@ namespace FlightSimulatorModel
         double _longitude;
         string _logger;
         bool _connected = false;
+        string _ip = System.Configuration.ConfigurationManager.AppSettings["ip"].ToString();
+        string _port = ConfigurationManager.AppSettings["port"].ToString();
 
         public FlightSimulatorM(IClient client)
         {
@@ -176,6 +179,28 @@ namespace FlightSimulatorModel
                 }              
             }
         }
+        public string Port
+        {
+            get
+            {
+                return _port;
+            }
+            set
+            {
+                _port = value;
+            }
+        }
+        public string Ip
+        {
+            get
+            {
+                return _ip;
+            }
+            set
+            {
+                _ip = value;
+            }
+        }
 
 
 
@@ -187,18 +212,18 @@ namespace FlightSimulatorModel
             }
         }
 
-        public void Connect(string ip, string port)
+        public void Connect()
         {
             int portNum;
-            if(!int.TryParse(port, out portNum))
+            if(!int.TryParse(_port, out portNum))
             {
                 AddToLogger("Port number is numbers only, please try again");
                 return;
             }
             try
             {
-                _client.Connect(ip, portNum);
-                AddToLogger("connected to ip " +ip+ " and port "+ portNum);
+                _client.Connect(_ip, portNum);
+                AddToLogger("connected to ip " +_ip+ " and port "+ portNum);
                 Connected = true;
             }catch(Exception e)
             {
@@ -245,7 +270,27 @@ namespace FlightSimulatorModel
             Pitch = WriteToSimulator("get /instrumentation/attitude-indicator/internal-pitch-deg \n",Pitch);
             AltAltitude = WriteToSimulator("get /instrumentation/altimeter/indicated-altitude-ft \n",AltAltitude);
             Latitude = WriteToSimulator("get /position/latitude-deg \n",Latitude);
+            if (Latitude > 180)
+            {
+                Latitude = 180;
+                AddToLogger("Latitude out of boundaries");
+            }
+            else if (Latitude < -180)
+            {
+                Latitude = -180;
+                AddToLogger("Latitude out of boundaries");
+            }
             Longitude = WriteToSimulator("get  / position/longitude-deg \n", Longitude);
+            if(Longitude > 90)
+            {
+                Longitude = 90;
+                AddToLogger("Longtitude out of boundaries");
+            } 
+            else if (Longitude < -90)
+            {
+                Longitude = -90;
+                AddToLogger("Longtitude out of boundaries");
+            }
         }
         public void SetRudderAndElevator(double rudder, double elevator)
         {
