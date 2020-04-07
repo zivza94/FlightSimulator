@@ -53,24 +53,10 @@ namespace FlightSimulatorApp
         }
         private void TextBox_TextChanged_PORT(object sender, TextChangedEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-            string portNumber = textBox.Text;
-            if (portNumber.Equals("Default")) { }
-            else {
-                TextBoxCheck(textBox);
-            }
         }
 
         private void TextBox_TextChanged_IP(object sender, TextChangedEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-            string ipNumber = textBox.Text;
-            if (ipNumber.Equals("Default")) { }
-            else
-            {
-                TextBoxCheck(textBox);
-            }
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
