@@ -17,6 +17,8 @@
         <Border Background="SeaShell" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
         <flightsimulatorapp:IndicatorsView Grid.Column="1" Grid.Row="0" Margin="20"/>
         <flightsimulatorapp:MyJoystick Grid.Column="1" Grid.Row="1" />
-        <flightsimulatorapp:Map Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="30"/>
+        <flightsimulatorapp:Map Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="30,30,30,80"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding VM_Logger}"  Margin="55,295,80,0" FontSize="13" Foreground="Red"></TextBlock>
+        
     </Grid>
 </Window>

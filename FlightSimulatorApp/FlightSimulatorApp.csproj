@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="pictures\airplane_icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FlightSimulatorModel\FlightSimulatorModel.csproj" />
     <ProjectReference Include="..\TelnetClient\ClientSide.csproj" />
   </ItemGroup>
@@ -21,6 +25,7 @@
   <ItemGroup>
     <Resource Include="pictures\aircraft.jpg" />
     <Resource Include="pictures\airplane1.jpg" />
+    <Resource Include="pictures\airplane_icon.png" />
   </ItemGroup>
 
   <ItemGroup>

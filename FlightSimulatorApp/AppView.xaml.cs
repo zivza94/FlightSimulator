@@ -21,6 +21,7 @@ namespace FlightSimulatorApp
         public AppView()
         {
             InitializeComponent();
+            DataContext = (Application.Current as App).loginVM;
         }
 
     }
