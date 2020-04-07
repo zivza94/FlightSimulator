@@ -21,6 +21,7 @@ namespace FlightSimulatorApp
         public Map()
         {
             InitializeComponent();
+            DataContext = (Application.Current as App).mapVM;
         }
     }
 }
