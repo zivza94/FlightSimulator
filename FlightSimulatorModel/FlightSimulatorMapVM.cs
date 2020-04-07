@@ -30,19 +30,15 @@ namespace FlightSimulatorModel
 
         public double VM_Latitude
         {
-            get { return _model.Latitude; }
+            get { return _model.Latitude;}
         }
         public double VM_Longitude
         {
             get { return _model.Longitude; }
         }
-         public Location VM_Location
+        public Location VM_Location
         {
-           // get { return "" + VM_Latitude.ToString() + "," + VM_Longitude.ToString(); }
-           
-           get {
-                Console.WriteLine(new Location(_model.Latitude, _model.Longitude));
-                return new Location(_model.Latitude, _model.Longitude); }
+            get { return new Location(VM_Latitude, VM_Longitude); }
         }
     }
 }
