@@ -18,7 +18,7 @@ namespace FlightSimulatorModel
         {
             _model = model;
             _model.PropertyChanged +=
-                delegate (object sender, PropertyChangedEventArgs e) { NotifyPropertyChanged("VM_" + e.PropertyName); };
+                delegate (object sender, PropertyChangedEventArgs e) { NotifyPropertyChanged("VM_Location"); };
         }
         public void NotifyPropertyChanged(string propName)
         {
@@ -28,13 +28,21 @@ namespace FlightSimulatorModel
             }
         }
 
-        public Location VM_Latitude
+        public double VM_Latitude
         {
-            get { return new Location(_model.Latitude, _model.Longitude);}
+            get { return _model.Latitude; }
         }
-        public Location VM_Longitude
+        public double VM_Longitude
         {
-            get { return new Location(_model.Latitude, _model.Longitude); }
+            get { return _model.Longitude; }
+        }
+         public Location VM_Location
+        {
+           // get { return "" + VM_Latitude.ToString() + "," + VM_Longitude.ToString(); }
+           
+           get {
+                Console.WriteLine(new Location(_model.Latitude, _model.Longitude));
+                return new Location(_model.Latitude, _model.Longitude); }
         }
     }
 }
