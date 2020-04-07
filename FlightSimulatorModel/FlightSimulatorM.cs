@@ -280,7 +280,7 @@ namespace FlightSimulatorModel
                 Latitude = -180;
                 AddToLogger("Latitude out of boundaries");
             }
-            Longitude = WriteToSimulator("get  / position/longitude-deg \n", Longitude);
+            Longitude = WriteToSimulator("get  /position/longitude-deg \n", Longitude);
             if(Longitude > 90)
             {
                 Longitude = 90;
