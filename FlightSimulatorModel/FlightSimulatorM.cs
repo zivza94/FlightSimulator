@@ -55,7 +55,7 @@ namespace FlightSimulatorModel
                 if (!_varSpeed.Equals(value))
                 {
                     _varSpeed = value;
-                    NotifyPropertyChanged("VarSpeed");
+                    NotifyPropertyChanged("VerSpeed");
                 }
                 
             }
@@ -248,6 +248,7 @@ namespace FlightSimulatorModel
         }        
         public void Start()
         {
+            ClearLogger();
             new Thread(delegate ()
             {
                 while (!_stop)
@@ -262,7 +263,7 @@ namespace FlightSimulatorModel
         {
             //Console.WriteLine("write + read");
             Heading = WriteToSimulator("get /instrumentation/heading-indicator/indicated-heading-deg \n",Heading);
-            VerSpeed = WriteToSimulator("get /instrumentation/gps/indicated-vertical-speed \n",VerSpeed);
+            VerSpeed = WriteToSimulator("get /instrumentation/gps/indicated-vertical-speed \n", VerSpeed);
             GroundSpeed = WriteToSimulator("get /instrumentation/gps/indicated-ground-speed-kt \n",GroundSpeed);
             AirSpeed = WriteToSimulator("get /instrumentation/airspeed-indicator/indicated-speed-kt \n",AirSpeed);
             GpsAltitude = WriteToSimulator("get /instrumentation/gps/indicated-altitude-ft \n", GpsAltitude);
@@ -332,6 +333,11 @@ namespace FlightSimulatorModel
         public void AddToLogger(string msg)
         {
             _logger += msg + "\n";
+            NotifyPropertyChanged("Logger");
+        }
+        public void ClearLogger()
+        {
+            _logger = "";
             NotifyPropertyChanged("Logger");
         }
     }

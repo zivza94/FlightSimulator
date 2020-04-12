@@ -30,7 +30,7 @@ namespace FlightSimulatorApp
 			// Create the startup window
 			MainWindow wnd = new MainWindow();
 			// Show the window
-			wnd.Show();
+			//wnd.Show();
 		}
 	}
 }

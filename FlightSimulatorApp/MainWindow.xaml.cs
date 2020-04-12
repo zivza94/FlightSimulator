@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FlightSimulatorApp;
 
 namespace FlightSimulatorApp
 {
@@ -28,9 +29,10 @@ namespace FlightSimulatorApp
         {
             InitializeComponent();
             DataContext = (Application.Current as App).loginVM;
+            AppView startApp = new AppView();
         }
 
-        private void TextBoxCheck(TextBox textBox)
+        /*private void TextBoxCheck(TextBox textBox)
         {
             string strNum = textBox.Text;
             int num = 0;
@@ -50,22 +52,25 @@ namespace FlightSimulatorApp
                     intIp = num;
                 }
             }
-        }
-        private void TextBox_TextChanged_PORT(object sender, TextChangedEventArgs e)
+        }*/
+        /*private void TextBox_TextChanged_PORT(object sender, TextChangedEventArgs e)
         {
-        }
+        }*/
 
-        private void TextBox_TextChanged_IP(object sender, TextChangedEventArgs e)
+        /*private void TextBox_TextChanged_IP(object sender, TextChangedEventArgs e)
         {
-        }
+        }*/
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // ADD CONNECTION TO THE IP AND PORT
-            (Application.Current as App).loginVM.StartConnection();
-            AppView startApp = new AppView();
-            this.Hide();
-            startApp.Show();
+            (Application.Current as App).loginVM.StartConnection();           
+            
+            /*if((Application.Current as App).loginVM.VM_Connected)
+            {
+                this.Hide();
+                startApp.Show();
+            }*/
         }
     }
 }

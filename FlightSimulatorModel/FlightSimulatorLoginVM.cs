@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FlightSimulatorModel
 {
-    public class FlightSimulatorLoginVM
+    public class FlightSimulatorLoginVM:INotifyPropertyChanged
     {
         readonly private IFlightSimulatorModel _model;
         public event PropertyChangedEventHandler PropertyChanged;
@@ -41,7 +41,7 @@ namespace FlightSimulatorModel
             get
             {
                 return _model.Connected;
-            }
+            }        
         }
 
         public string VM_Logger
@@ -72,7 +72,11 @@ namespace FlightSimulatorModel
         public void StartConnection()
         {
             _model.Connect();
-            _model.Start();
+            if(VM_Connected)
+            {
+                _model.Start();
+            }
+            
         }
 
     }
