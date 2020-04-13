@@ -13,7 +13,7 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <controls:Joystick/>
+            <controls:Joystick xConverted="{Binding Path=VM_Rudder, Mode=OneWayToSource}"/>
             <DockPanel Grid.Row="1" VerticalAlignment="Center" Margin="10">
                 <TextBlock Text="Aileron"/>
                 <TextBlock Text="{Binding ElementName=Aileron, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
