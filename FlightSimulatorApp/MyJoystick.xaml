@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:FlightSimulatorApp" xmlns:controls="clr-namespace:FlightSimulatorApp.controls"
+             xmlns:local="clr-namespace:FlightSimulatorApp" 
+             xmlns:controls="clr-namespace:FlightSimulatorApp.controls"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="800">
     <Viewbox Stretch="Uniform">
@@ -13,16 +14,16 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <controls:Joystick xConverted="{Binding Path=VM_Rudder, Mode=OneWayToSource}"/>
+            <controls:Joystick x:Name="joystick" MouseLeftButtonDown="Joystick_MouseLeftButtonDown" MouseLeftButtonUp="joystick_MouseLeftButtonUp" MouseMove="joystick_MouseMove"/>
             <DockPanel Grid.Row="1" VerticalAlignment="Center" Margin="10">
                 <TextBlock Text="Aileron"/>
                 <TextBlock Text="{Binding ElementName=Aileron, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
-                <Slider Minimum="-1" Maximum="1" TickPlacement="BottomRight" TickFrequency="5" Name="Aileron" Value="{Binding Path=VM_Aileron, Mode=TwoWay}"/>
+                <Slider Minimum="-1" Maximum="1" IsMoveToPointEnabled="True" TickPlacement="BottomRight" TickFrequency="5" Name="Aileron" Value="{Binding Path=VM_Aileron, Mode=TwoWay}"/>
             </DockPanel>
             <DockPanel Grid.Row="2" VerticalAlignment="Center" Margin="10">
                 <TextBlock Text="Throttle" />
                 <TextBlock Text="{Binding ElementName=Throttle, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
-                <Slider Minimum="0" Maximum="1" TickPlacement="BottomRight" TickFrequency="5" Name="Throttle" Value="{Binding Path=VM_Throttle, Mode=TwoWay}"/>
+                <Slider Minimum="0" Maximum="1" IsMoveToPointEnabled="True" TickPlacement="BottomRight" TickFrequency="5" Name="Throttle" Value="{Binding Path=VM_Throttle, Mode=TwoWay}"/>
             </DockPanel>
         </Grid>
     </Viewbox>
