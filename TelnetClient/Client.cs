@@ -18,8 +18,8 @@ namespace ClientSide
             {
                 _client = new TcpClient("localhost", 5402);
                 _ns = _client.GetStream();
-                _ns.ReadTimeout = 1000;
-                _ns.WriteTimeout = 1000;
+                _ns.ReadTimeout = 10000;
+                _ns.WriteTimeout = 10000;
             }
             catch (Exception e)
             {
@@ -47,8 +47,15 @@ namespace ClientSide
             int bytesRead;
             try { 
                 bytesRead = _ns.Read(bytes, 0, bytes.Length); 
-            } catch (Exception e)
+            } catch (TimeoutException e)
             {
+                throw e;
+            } catch(Exception e)
+            {
+                if (e.Message.Contains("time"))
+                {
+                    throw new TimeoutException(e.Message);
+                }
                 throw e;
             }
             
@@ -70,6 +77,10 @@ namespace ClientSide
             }
             catch(Exception e)
             {
+                if (e.Message.Contains("time"))
+                {
+                    throw new TimeoutException(e.Message);
+                }
                 throw e;
             }                    
         }
