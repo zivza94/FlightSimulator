@@ -41,17 +41,9 @@ namespace FlightSimulatorApp
             y = centerKnobStoryBoard.Children[1] as DoubleAnimation;
             x.From = 0;
             y.From = 0;
+            rudder = 0;
+            elevator = 0;
         }
-
-        private void Aileron_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
-        private void Throttle_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
-
         private void joystick_MouseMove(object sender, MouseEventArgs e)
         {
             if (mousePressed)
@@ -86,10 +78,11 @@ namespace FlightSimulatorApp
                 if (yMax == false)
                 {
                     y.To = y2 - knobCenter.Y;
+
                 }
                 //start the animation          
                 centerKnobStoryBoard.Begin();
-                UpdateRudderAndElevator((double)x.To, (double)y.To);
+                UpdateRudderAndElevator((double)x.To, -(double)y.To);
                 if (xMax == false)
                 {
                     x.From = x.To;
@@ -98,6 +91,7 @@ namespace FlightSimulatorApp
                 {
                     y.From = y.To;
                 }
+               
             }
         }
 
@@ -117,7 +111,7 @@ namespace FlightSimulatorApp
             y.To = 0;
             //start the animation
             centerKnobStoryBoard.Begin();
-            controlVM.SetRudderAndElevator(0, 0);
+            UpdateRudderAndElevator(0, 0);
             x.From = x.To;
             y.From = y.To;
         }
@@ -143,6 +137,8 @@ namespace FlightSimulatorApp
                 elevator = -1;
             }
             controlVM.SetRudderAndElevator(rudder, elevator);
+            Rudder.Text = rudder.ToString("0.000");
+            Elevator.Content = elevator.ToString("0.000");
         }
     }
 }

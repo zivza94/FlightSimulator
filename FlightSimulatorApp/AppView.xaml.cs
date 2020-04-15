@@ -24,5 +24,9 @@ namespace FlightSimulatorApp
             DataContext = (Application.Current as App).loginVM;
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            (Application.Current as App).loginVM.EndConnection();
+        }
     }
 }
