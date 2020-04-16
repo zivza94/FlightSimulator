@@ -31,7 +31,14 @@ namespace FlightSimulatorApp
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // ADD CONNECTION TO THE IP AND PORT
-            (Application.Current as App).loginVM.StartConnection();                                   
+            (Application.Current as App).loginVM.StartConnection();
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            Application.Current.Shutdown();
         }
     }
 }

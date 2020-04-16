@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -217,6 +218,7 @@ namespace FlightSimulatorModel
                 AddToLogger("Port number is numbers only, please try again");
                 return;
             }
+
             try
             {
                 _client.Connect(Ip, portNum);
