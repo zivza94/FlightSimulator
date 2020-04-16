@@ -9,11 +9,11 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <wpf:Map CredentialsProvider="dSNQN7f9yjJPOWwqbbDQ~KFEJKQ4FmVlzmxOh7d-2zA~Aq56Zn70lSQYcTFQ_vzQbfqOkAGDLRq0IQ-NbJujQzOfSdvcSkDw7I9y3CFGgsi6"
-                 ZoomLevel="10" Center="32.006833306,34.885329792" >
+                 ZoomLevel="7" Center="32.006833306,34.885329792" >
             <!--<wpf:Pushpin wpf:MapLayer.Position="{Binding VM_Location}"></wpf:Pushpin> -->
             <Canvas Width="50" Height="100" 
               wpf:MapLayer.Position="{Binding VM_Location}" 
-              wpf:MapLayer.PositionOrigin="BottomCenter" Opacity="0.7">
+              wpf:MapLayer.PositionOrigin="Center" Opacity="0.7">
                 <Image Source="pictures\airplane_icon.png" Stretch="Uniform" Height="70" Canvas.Top="10">
                 </Image> 
             </Canvas>
