@@ -6,7 +6,6 @@
         >
     <Window.Resources>
         <FlightSimulatorApp:BoolVisibilityConverter x:Key="BoolVisConverter"/>
-        <FlightSimulatorApp:BoolInverter x:Key="Converter"/>
     </Window.Resources>
     <Window.Visibility>
         <Binding Path="VM_Connected" Converter="{StaticResource BoolVisConverter}"></Binding>
