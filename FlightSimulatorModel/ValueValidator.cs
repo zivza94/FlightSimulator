@@ -12,7 +12,7 @@ namespace FlightSimulatorModel
         public ValueValidator()
         {
             _ValuesBoundry = new Dictionary<string, KeyValuePair<double, double>>();
-
+            /*
             //dashBoard
             _ValuesBoundry.Add("Heading", new KeyValuePair<double, double>(0,360));
             _ValuesBoundry.Add("VerSpeed", new KeyValuePair<double, double>(-5000,721));
@@ -22,7 +22,8 @@ namespace FlightSimulatorModel
             //_ValuesBoundry.Add("Roll", new KeyValuePair<double, double>());
             //_ValuesBoundry.Add("Pitch", new KeyValuePair<double, double>(10, 50));
             _ValuesBoundry.Add("AltAltitude", new KeyValuePair<double, double>(0,13500));
-            
+            */
+
             //controlers
             _ValuesBoundry.Add("Rudder", new KeyValuePair<double, double>(-1,1));
             _ValuesBoundry.Add("Elevator", new KeyValuePair<double, double>(-1,1));

@@ -22,55 +22,17 @@ namespace FlightSimulatorApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        //Default
-        int intPort = 0;
-        int intIp = 0;
         public MainWindow()
         {
             InitializeComponent();
             DataContext = (Application.Current as App).loginVM;
             AppView startApp = new AppView();
-        }
-
-        /*private void TextBoxCheck(TextBox textBox)
-        {
-            string strNum = textBox.Text;
-            int num = 0;
-            if (strNum.Equals("Default")) { }
-            else if (strNum.Length > 0 && int.TryParse(strNum, out num) == false)
-            {
-                MessageBox.Show("Use only numbers");
-                textBox.Text = textBox.Text.Remove(strNum.Length - 1);
-            } else
-            {
-                if (textBox.Name.Equals("port"))
-                {
-                    intPort = num;
-                }
-                else
-                {
-                    intIp = num;
-                }
-            }
-        }*/
-        /*private void TextBox_TextChanged_PORT(object sender, TextChangedEventArgs e)
-        {
-        }*/
-
-        /*private void TextBox_TextChanged_IP(object sender, TextChangedEventArgs e)
-        {
-        }*/
+        }      
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // ADD CONNECTION TO THE IP AND PORT
-            (Application.Current as App).loginVM.StartConnection();           
-            
-            /*if((Application.Current as App).loginVM.VM_Connected)
-            {
-                this.Hide();
-                startApp.Show();
-            }*/
+            (Application.Current as App).loginVM.StartConnection();                                   
         }
     }
 }

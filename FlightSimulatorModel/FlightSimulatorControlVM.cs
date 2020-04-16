@@ -10,29 +10,26 @@ using System.Threading.Tasks;
 
 namespace FlightSimulatorModel
 {
-    public class FlightSimulatorControlVM : INotifyPropertyChanged
+    public class FlightSimulatorControlVM 
     {
         readonly private IFlightSimulatorModel _model;
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
         private double _aileron;
         private double _throttle;
         public FlightSimulatorControlVM(IFlightSimulatorModel model)
         {
             _model = model;
-            _model.PropertyChanged +=
-                delegate (object sender, PropertyChangedEventArgs e) { NotifyPropertyChanged("VM_" + e.PropertyName); };
+           // _model.PropertyChanged +=
+           //     delegate (object sender, PropertyChangedEventArgs e) { NotifyPropertyChanged("VM_" + e.PropertyName); };
             
 
         }
 
         
-        public void NotifyPropertyChanged(string propName)
+        /*public void NotifyPropertyChanged(string propName)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propName));
-            }
-        }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+        }*/
         
         
         public double VM_Throttle

@@ -13,8 +13,8 @@ namespace FlightSimulatorModel
     public class FlightSimulatorM: IFlightSimulatorModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        ValueValidator _validator;
-        IClient _client;
+        private readonly ValueValidator _validator;
+        private readonly IClient _client;
         bool _stop;
         double _heading;
         double _varSpeed;
@@ -207,10 +207,7 @@ namespace FlightSimulatorModel
 
         public void NotifyPropertyChanged(string propName)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
         public void Connect()
@@ -241,6 +238,7 @@ namespace FlightSimulatorModel
             {
                 _client.Disconnect();
                 Connected = false;
+                ClearLogger();
             }
             catch (Exception e)
             {
@@ -317,7 +315,7 @@ namespace FlightSimulatorModel
             }
             catch(TimeoutException ex)
             {
-                AddToLogger("timeout period has passed");
+                AddToLogger($"timeout period has passed {ex.Message}");
                 retval = prop;
             }
             catch(Exception ex)
