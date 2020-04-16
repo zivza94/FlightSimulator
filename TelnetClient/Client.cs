@@ -16,7 +16,7 @@ namespace ClientSide
         {
             try
             {
-                _client = new TcpClient("localhost", 5402);
+                _client = new TcpClient(ip, port);
                 _ns = _client.GetStream();
                 _ns.ReadTimeout = 10000;
                 _ns.WriteTimeout = 10000;
