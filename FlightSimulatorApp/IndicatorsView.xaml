@@ -25,20 +25,20 @@
         <Border Background="Silver" Grid.ColumnSpan="5" Grid.RowSpan="5" CornerRadius="7"/>
         <TextBlock Text="Dash Board" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Margin="10" FontSize="15" FontWeight="Bold"/>
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Heading (deg)" Margin="4"/>
-        <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=VM_Heading}"></Label>
+        <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=VM_Heading}" ContentStringFormat='N3'></Label>
         <TextBlock Grid.Row="2" Grid.Column="0" Text="Vertical Speed" Margin="4"/>
-        <Label Grid.Row="2" Grid.Column="1" Content="{Binding Path=VM_VerSpeed}"></Label >
+        <Label Grid.Row="2" Grid.Column="1" Content="{Binding Path=VM_VerSpeed}" ContentStringFormat='N3'></Label >
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Ground Speed (kt)" Margin="4"/>
-        <Label Grid.Row="3" Grid.Column="1" Content="{Binding Path=VM_GroundSpeed}"></Label>
+        <Label Grid.Row="3" Grid.Column="1" Content="{Binding Path=VM_GroundSpeed}" ContentStringFormat='N3'></Label>
         <TextBlock Grid.Row="4" Grid.Column="0" Text="Air Speed (kt)" Margin="4"/>
-        <Label Grid.Row="4" Grid.Column="1" Content="{Binding Path=VM_AirSpeed}"></Label>
+        <Label Grid.Row="4" Grid.Column="1" Content="{Binding Path=VM_AirSpeed}" ContentStringFormat='N3'></Label>
         <TextBlock Grid.Row="1" Grid.Column="3" Text="Altitude (ft)" Margin="4"/>
-        <Label Grid.Row="1" Grid.Column="4" Content="{Binding Path=VM_GpsAltitude}"></Label>
+        <Label Grid.Row="1" Grid.Column="4" Content="{Binding Path=VM_GpsAltitude}" ContentStringFormat='N3'></Label>
         <TextBlock Grid.Row="2" Grid.Column="3" Text="Roll (deg)" Margin="4"/>
-        <Label Grid.Row="2" Grid.Column="4" Content="{Binding Path=VM_Roll}"></Label>
+        <Label Grid.Row="2" Grid.Column="4" Content="{Binding Path=VM_Roll}" ContentStringFormat='N3'></Label>
         <TextBlock Grid.Row="3" Grid.Column="3" Text="Pitch (deg" Margin="4"/>
-        <Label Grid.Row="3" Grid.Column="4" Content="{Binding Path=VM_Pitch}"></Label>
+        <Label Grid.Row="3" Grid.Column="4" Content="{Binding Path=VM_Pitch}" ContentStringFormat='N3'></Label>
         <TextBlock Grid.Row="4" Grid.Column="3" Text="Altimeter (ft)" Margin="4"/>
-        <Label Grid.Row="4" Grid.Column="4" Content="{Binding Path=VM_AltAltitude}"></Label>
+        <Label Grid.Row="4" Grid.Column="4" Content="{Binding Path=VM_AltAltitude}" ContentStringFormat='N3'></Label>
     </Grid>
 </UserControl>
