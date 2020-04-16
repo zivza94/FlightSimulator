@@ -109,7 +109,12 @@ namespace FlightSimulatorApp
             //Return the animation to the middle
             x.To = 0;
             y.To = 0;
-            //start the animation
+            //start the animation"
+            //x.BeginAnimation();
+            //Duration = new System.Windows.Duration(new TimeSpan(40000000));
+            //y.BeginAnimation();
+            x.Duration = new System.Windows.Duration(new TimeSpan(20000000));
+            y.Duration = new Duration(new TimeSpan(20000000));
             centerKnobStoryBoard.Begin();
             UpdateRudderAndElevator(0, 0);
             x.From = x.To;
