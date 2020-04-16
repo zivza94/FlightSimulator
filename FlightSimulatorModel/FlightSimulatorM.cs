@@ -223,6 +223,7 @@ namespace FlightSimulatorModel
                 _client.Connect(Ip, portNum);
                 AddToLogger("connected to ip " +Ip+ " and port "+ portNum);
                 Connected = true;
+                _stop = false;
             }catch(Exception e)
             {
                 AddToLogger("Failed to connect to server, Please check server and try again " + e.Message);
