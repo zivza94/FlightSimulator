@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientSide", "TelnetClient\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlightSimulatorApp", "FlightSimulatorApp\FlightSimulatorApp.csproj", "{9B3B3963-52AB-4619-9C6F-FB9E48B47128}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMAndVM", "TestMAndVM\TestMAndVM.csproj", "{D5FC947E-D662-44FE-9D8B-6D80C0CFFC5D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,12 +42,6 @@ Global
 		{9B3B3963-52AB-4619-9C6F-FB9E48B47128}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9B3B3963-52AB-4619-9C6F-FB9E48B47128}.x86|Any CPU.ActiveCfg = x86|Any CPU
 		{9B3B3963-52AB-4619-9C6F-FB9E48B47128}.x86|Any CPU.Build.0 = x86|Any CPU
-		{D5FC947E-D662-44FE-9D8B-6D80C0CFFC5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D5FC947E-D662-44FE-9D8B-6D80C0CFFC5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D5FC947E-D662-44FE-9D8B-6D80C0CFFC5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D5FC947E-D662-44FE-9D8B-6D80C0CFFC5D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D5FC947E-D662-44FE-9D8B-6D80C0CFFC5D}.x86|Any CPU.ActiveCfg = x86|Any CPU
-		{D5FC947E-D662-44FE-9D8B-6D80C0CFFC5D}.x86|Any CPU.Build.0 = x86|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
