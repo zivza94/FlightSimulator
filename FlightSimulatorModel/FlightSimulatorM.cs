@@ -13,7 +13,7 @@ namespace FlightSimulatorModel
     public class FlightSimulatorM: IFlightSimulatorModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
+        ValueValidator _validator;
         IClient _client;
         bool _stop;
         double _heading;
@@ -28,13 +28,14 @@ namespace FlightSimulatorModel
         double _longitude;
         string _logger;
         bool _connected = false;
-        string _ip = System.Configuration.ConfigurationManager.AppSettings["ip"].ToString();
+        string _ip = ConfigurationManager.AppSettings["ip"].ToString();
         string _port = ConfigurationManager.AppSettings["port"].ToString();
 
         public FlightSimulatorM(IClient client)
         {
             _client = client;
             _stop = false;
+             _validator = new ValueValidator();
         }
         //DashBoard
         public Double Heading {
@@ -215,19 +216,19 @@ namespace FlightSimulatorModel
         public void Connect()
         {
             int portNum;
-            if(!int.TryParse(_port, out portNum))
+            if(!int.TryParse(Port, out portNum))
             {
                 AddToLogger("Port number is numbers only, please try again");
                 return;
             }
             try
             {
-                _client.Connect(_ip, portNum);
-                AddToLogger("connected to ip " +_ip+ " and port "+ portNum);
+                _client.Connect(Ip, portNum);
+                AddToLogger("connected to ip " +Ip+ " and port "+ portNum);
                 Connected = true;
             }catch(Exception e)
             {
-                AddToLogger("Failed to connect to server, Please try again" + e.Message);
+                AddToLogger("Failed to connect to server, Please check server and try again " + e.Message);
             }
             
         }
@@ -262,50 +263,42 @@ namespace FlightSimulatorModel
         private void WriteAndRead()
         {
             //Console.WriteLine("write + read");
-            Heading = WriteToSimulator("get /instrumentation/heading-indicator/indicated-heading-deg \n",Heading);
-            VerSpeed = WriteToSimulator("get /instrumentation/gps/indicated-vertical-speed \n", VerSpeed);
-            GroundSpeed = WriteToSimulator("get /instrumentation/gps/indicated-ground-speed-kt \n",GroundSpeed);
-            AirSpeed = WriteToSimulator("get /instrumentation/airspeed-indicator/indicated-speed-kt \n",AirSpeed);
-            GpsAltitude = WriteToSimulator("get /instrumentation/gps/indicated-altitude-ft \n", GpsAltitude);
-            Roll = WriteToSimulator("get /instrumentation/attitude-indicator/internal-roll-deg \n",Roll);
-            Pitch = WriteToSimulator("get /instrumentation/attitude-indicator/internal-pitch-deg \n",Pitch);
-            AltAltitude = WriteToSimulator("get /instrumentation/altimeter/indicated-altitude-ft \n",AltAltitude);
-            Latitude = WriteToSimulator("get /position/latitude-deg \n",Latitude);
-            if (Latitude > 180)
+            Heading = _validator.GetValue("Heading", WriteToSimulator("get /instrumentation/heading-indicator/indicated-heading-deg \n", Heading));
+            VerSpeed = _validator.GetValue("VerSpeed", WriteToSimulator("get /instrumentation/gps/indicated-vertical-speed \n", VerSpeed));
+            GroundSpeed = _validator.GetValue("GroundSpeed", WriteToSimulator("get /instrumentation/gps/indicated-ground-speed-kt \n",GroundSpeed));
+            AirSpeed = _validator.GetValue("AirSpeed", WriteToSimulator("get /instrumentation/airspeed-indicator/indicated-speed-kt \n",AirSpeed));
+            GpsAltitude = _validator.GetValue("GpsAltitude", WriteToSimulator("get /instrumentation/gps/indicated-altitude-ft \n", GpsAltitude));
+            Roll = _validator.GetValue("Roll", WriteToSimulator("get /instrumentation/attitude-indicator/internal-roll-deg \n",Roll));
+            Pitch = _validator.GetValue("Pitch", WriteToSimulator("get /instrumentation/attitude-indicator/internal-pitch-deg \n",Pitch));
+            AltAltitude = _validator.GetValue("AltAltitude", WriteToSimulator("get /instrumentation/altimeter/indicated-altitude-ft \n",AltAltitude));
+            Latitude = _validator.GetValue("Latitude", WriteToSimulator("get /position/latitude-deg \n",Latitude));
+            if(Latitude >= 90 || Latitude <= -90)
             {
-                Latitude = 180;
-                AddToLogger("Latitude out of boundaries");
+                AddToLogger("the plane is out of boundries");
             }
-            else if (Latitude < -180)
+            Longitude = _validator.GetValue("Longitude", WriteToSimulator("get  /position/longitude-deg \n", Longitude));
+            if (Longitude >= 180 || Longitude <= -180)
             {
-                Latitude = -180;
-                AddToLogger("Latitude out of boundaries");
-            }
-            Longitude = WriteToSimulator("get  /position/longitude-deg \n", Longitude);
-            if(Longitude > 90)
-            {
-                Longitude = 90;
-                AddToLogger("Longtitude out of boundaries");
-            } 
-            else if (Longitude < -90)
-            {
-                Longitude = -90;
-                AddToLogger("Longtitude out of boundaries");
+                AddToLogger("the plane is out of boundries");
             }
         }
         public void SetRudderAndElevator(double rudder, double elevator)
         {
-                WriteToSimulator("set /controls/flight/rudder " + rudder + "\n", rudder);
-                WriteToSimulator("set /controls/flight/elevator " + elevator + "\n", elevator);
+            rudder = _validator.GetValue("Rudder", rudder);
+            elevator = _validator.GetValue("Elevator", elevator);
+            WriteToSimulator("set /controls/flight/rudder " + rudder + "\n", rudder);
+            WriteToSimulator("set /controls/flight/elevator " + elevator + "\n", elevator);
         }
 
         public void SetAileron(double aileron)
         {
-                WriteToSimulator("set /controls/flight/aileron " + aileron + "\n", aileron);
+            aileron = _validator.GetValue("Aileron", aileron);
+            WriteToSimulator("set /controls/flight/aileron " + aileron + "\n", aileron);
         }
 
         public void SetThrottle(double throttle)
-        {           
+        {
+            throttle = _validator.GetValue("Throttle", throttle);
             WriteToSimulator("set /controls/engines/current-engine/throttle " + throttle + "\n",throttle);
         }
 
@@ -322,9 +315,18 @@ namespace FlightSimulatorModel
                 }
 
             }
+            catch(TimeoutException ex)
+            {
+                AddToLogger("timeout period has passed");
+                retval = prop;
+            }
             catch(Exception ex)
             {
                 AddToLogger(ex.Message);
+                if (Connected)
+                {
+                    this.Connect();
+                }
                 retval = prop;
             }
             

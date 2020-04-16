@@ -54,6 +54,7 @@
     <Compile Include="FlightSimulatorM.cs" />
     <Compile Include="FlightSimulatorControlVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValueValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Contracts\Contracts.csproj">
